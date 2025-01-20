@@ -5,22 +5,27 @@ canbus_uuid: 334a2345540a
 tool_number: 5
 extruder: extruder5
 fan: fan_generic EBBT5_partfan
-gcode_x_offset: -0.611328
-gcode_y_offset: 0.290234
-gcode_z_offset: 0.608
-params_park_x: 342.3
-params_park_y: 9.3
-params_park_z: 336
+gcode_x_offset: 0
+gcode_y_offset: 0
+gcode_z_offset: 0
+#X:70.500 Y:12.000 Z:340.000 E:0.000
+#X:139.000 Y:13.000 Z:339.507 E:0.000
+#X:208.000 Y:12.000 Z:340.010 E:0.000
+#X:277.000 Y:12.000 Z:338.001 E:0.000
+params_park_x: 277.00
+params_park_y: 12.00
+params_park_z: 340.0
+params_close_y: 30.0
+params_safe_y: 120.0
 params_input_shaper_type_x: 'mzv'
-params_input_shaper_freq_x: 57.4
+params_input_shaper_freq_x: 67.4
 params_input_shaper_type_y: 'mzv'
-params_input_shaper_freq_y: 42.8
+params_input_shaper_freq_y: 43.0
 
 [tool_probe EBBT5]
 pin: ^EBBT5:PB6
 tool: 5
-#z_offset: -1.500
-z_offset: 0
+z_offset: -0.975 #-1.25
 speed: 5.0
 drop_first_result: True
 samples: 3
@@ -43,11 +48,12 @@ heater_pin: EBBT5: PB13
 sensor_type: ATC Semitec 104NT-4-R025H42G
 sensor_pin: EBBT5: PA3
 control: pid
-pid_Kp=34.103
-pid_Ki=4.942
-pid_Kd=58.831
+pid_Kp=25.638
+pid_Ki=3.225
+pid_Kd=50.958
+rotation_distance: 47.088
+gear_ratio: 9:1
 microsteps: 16
-rotation_distance: 4.69
 nozzle_diameter: 0.400
 filament_diameter: 1.750
 min_temp: 0
@@ -105,7 +111,7 @@ gcode:
 
 [gcode_macro T5]
 variable_realtool: "EBBT5"
-variable_backuptool: ""
+variable_backuptool: "T5"
 variable_color: ""
 gcode:
   {% set consumed = printer["gcode_macro " ~ realtool].filament_consumed|int %}
@@ -122,7 +128,7 @@ pin: EBBT5:PD3                                      #   The pin connected to the
 chain_count: 3                                      #   The number of Neopixel chips that are "daisy chained" to the
                                                     #   provided pin. The default is 1 (which indicates only a single
                                                     #   Neopixel is connected to the pin).
-color_order: GRB                                    #   Set the pixel order required by the LED hardware. Options are GRB,
+color_order: GRBW                                    #   Set the pixel order required by the LED hardware. Options are GRB,
                                                     #   RGB, GRBW, or RGBW. The default is GRB.
 initial_RED: 1.0
 initial_GREEN: 0.0
