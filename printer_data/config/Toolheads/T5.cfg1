@@ -142,4 +142,4 @@ variable_nozzle_led_name:       "T5_leds"         # The name of the addressable 
                                                   # typically be the same LED chain as the logo.
 variable_nozzle_idx:            "2,3"             # A comma-separated list of indexes of LEDs in the nozzle
 gcode:
-    # This section is required.  Do Not Delete.
+    # This section is required.  Do Not Delete!
